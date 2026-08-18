@@ -1,0 +1,15 @@
+version: "3.8"
+
+services:
+  app:
+    build: .
+    environment:
+      - ADMIN_EMAIL=admin@smartstacks.dev
+      - ADMIN_PASSWORD_HASH=9c735c764b62f10575f6cd916e6259255a7b98475b1764b5c509c4c77bb9f98f
+      - PORT=3000
+    networks:
+      - dokploy-network
+
+networks:
+  dokploy-network:
+    external: true
