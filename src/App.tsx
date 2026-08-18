@@ -56,19 +56,19 @@ export default function App() {
   const [pricing, setPricing] = useState<Pricing>(saved?.pricing ?? DEFAULT_PRICING);
   const [client, setClient] = useState<ClientInfo>(DEFAULT_CLIENT);
 
+  // ---------- Historique des devis (3 mois) ----------
+  const [history, setHistory] = useState<SavedQuote[]>(() => loadHistory());
+
   useEffect(() => {
     saveSettings({ company, pricing });
   }, [company, pricing]);
-
-  if (loading) return null;
-  if (!user) return <LoginPage />;
 
   const result = useMemo(() => computeSizing(appliances, params), [appliances, params]);
   const quote = useMemo(() => buildQuote(result, params, pricing), [result, params, pricing]);
   const hasNeeds = result.dailyEnergyWh > 0;
 
-  // ---------- Historique des devis (3 mois) ----------
-  const [history, setHistory] = useState<SavedQuote[]>(() => loadHistory());
+  if (loading) return null;
+  if (!user) return <LoginPage />;
 
   const persistHistory = (entries: SavedQuote[]) => {
     setHistory(entries);
