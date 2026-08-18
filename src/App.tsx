@@ -137,7 +137,7 @@ export default function App() {
               : "Outil commercial de pré-dimensionnement"}
           </div>
           <button
-            onClick={() => logout?.()}
+            onClick={() => logout()}
             className="flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-xs font-medium text-slate-500 hover:bg-slate-100"
             title="Se déconnecter"
           >
