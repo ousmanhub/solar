@@ -54,7 +54,7 @@ app.get('/api/health', (req, res) => {
 });
 
 // Serve static frontend in production
-const staticPath = path.join(__dirname, '../frontend/dist');
+const staticPath = path.join(__dirname, 'frontend/dist');
 app.use(express.static(staticPath));
 app.get('*', (req, res) => {
   res.sendFile(path.join(staticPath, 'index.html'));
